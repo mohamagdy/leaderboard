@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe User do
 	describe 'Mass assignment' do
-		it 'should not mass assign protected attributes' do
-			User.accessible_attributes.should_not include(:level, :overall)
-		end
-
 		it 'should mass assign accessible attributes' do
 			User.accessible_attributes.should include(:name)
 		end

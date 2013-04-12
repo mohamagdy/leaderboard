@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :name
+  # Note that we should remove the level and overall attributes
+  # to avoid users from tweaking the level and overall themselves
+  attr_accessible :name, :level, :overall
 
   # This method takes the sorting and pagination parameters and select
   # the top users specified by the "top" parameter and sort the users
