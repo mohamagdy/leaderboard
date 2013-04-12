@@ -1,5 +1,5 @@
-== Leadership
-=== Running the app
+# Leadership
+## Running the app
 * `bundle`
 * `rake db:create`
 * `rake db:migrate`
@@ -7,7 +7,7 @@
 * `rspec` to run the Rspec tests
 * And finally, run the app `rails s` and visit `localhost:3000`
 
-=== Questions
+## Questions
 ** How would you test this?
 There are some `rsepc` tests in the `spec` directory. Possible testing scenarios are:
 1. Retrieving only top 5 users
