@@ -35,10 +35,20 @@ describe UsersController do
   end
 
   describe "GET index" do
-    it "assigns all users as @users" do
-      user = User.create! valid_attributes
+    before(:each) do
+      @users = 20.times.map { |time| FactoryGirl.create(:user, level: time, overall: time) }.reverse
+    end
+
+    it "assigns top 10 users as @users" do  
+      User.should_receive(:list).and_return(@users[0..9])
       get :index, {}, valid_session
-      assigns(:users).should eq([user])
+      assigns(:users).should eq(@users[0..9])
+    end
+
+    it "assigns top 10 users sorted by level as @users" do
+      User.should_receive(:list).with({'sort' => 'level'}).and_return(@users[0..9])
+      get :index, {sort: 'level'}, valid_session
+      assigns(:users).should eq(@users[0..9])
     end
   end
 
